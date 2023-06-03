@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <section>
+      <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+      <span class="hover-btn">Button</span>
+    </section>
+
+    <section class="overlay">
+      <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+      <span class="hover-btn2">Button</span>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+      integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const span = document.querySelector(".hover-btn2");
+      const overlay = document.querySelector(".overlay");
+
+      window.addEventListener("mousemove", e => {
+        const { clientX, clientY } = e;
+        const x = Math.round((clientX / window.innerWidth) * 100);
+
+        const y = Math.round((clientY / window.innerHeight) * 100);
+
+        gsap.to(overlay, {
+          "--x": `${x}%`,
+          "--y": `${y}%`,
+          duration: 0.3,
+          ease: "sine.out"
+        });
+      });
+
+      span.addEventListener("click", () => {
+        overlay.classList.toggle("is-open");
+      });
+    </script>
+  </body>
+</html>
